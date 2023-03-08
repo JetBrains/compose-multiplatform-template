@@ -1,3 +1,5 @@
+[![official project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
+
 # Compose Multiplatform Application
 
 Use this template to start developing your own Compose Multiplatform application targeting desktop, Android, and iOS (experimental).
