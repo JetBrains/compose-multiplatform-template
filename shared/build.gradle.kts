@@ -1,5 +1,3 @@
-@file:Suppress("OPT_IN_IS_NOT_ENABLED")
-
 plugins {
     kotlin("multiplatform")
     kotlin("native.cocoapods")
@@ -7,17 +5,17 @@ plugins {
     id("org.jetbrains.compose")
 }
 
-version = "1.0-SNAPSHOT"
-
 kotlin {
     android()
 
     jvm("desktop")
 
-    ios()
+    iosX64()
+    iosArm64()
     iosSimulatorArm64()
 
     cocoapods {
+        version = "1.0.0"
         summary = "Some description for the Shared Module"
         homepage = "Link to the Shared Module homepage"
         ios.deploymentTarget = "14.1"
@@ -46,9 +44,14 @@ kotlin {
                 api("androidx.core:core-ktx:1.9.0")
             }
         }
-        val iosMain by getting
-        val iosSimulatorArm64Main by getting {
-            dependsOn(iosMain)
+        val iosX64Main by getting
+        val iosArm64Main by getting
+        val iosSimulatorArm64Main by getting
+        val iosMain by creating {
+            dependsOn(commonMain)
+            iosX64Main.dependsOn(this)
+            iosArm64Main.dependsOn(this)
+            iosSimulatorArm64Main.dependsOn(this)
         }
         val desktopMain by getting {
             dependencies {
@@ -59,14 +62,16 @@ kotlin {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = (findProperty("android.compileSdk") as String).toInt()
+    namespace = "com.myapplication.common"
+
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
     sourceSets["main"].resources.srcDirs("src/commonMain/resources")
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 33
+        minSdk = (findProperty("android.minSdk") as String).toInt()
+        targetSdk = (findProperty("android.targetSdk") as String).toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11

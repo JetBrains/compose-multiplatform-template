@@ -1,3 +1,9 @@
+rootProject.name = "My application"
+
+include(":androidApp")
+include(":shared")
+include(":desktopApp")
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -6,22 +12,23 @@ pluginManagement {
     }
 
     plugins {
-        val kotlinVersion = extra["kotlin.version"] as String
-        val agpVersion = extra["agp.version"] as String
-        val composeVersion = extra["compose.version"] as String
-
+        val kotlinVersion = "1.8.10"
         kotlin("jvm").version(kotlinVersion)
         kotlin("multiplatform").version(kotlinVersion)
         kotlin("android").version(kotlinVersion)
-        id("com.android.base").version(agpVersion)
-        id("com.android.application").version(agpVersion)
-        id("com.android.library").version(agpVersion)
-        id("org.jetbrains.compose").version(composeVersion)
+
+        val agp = "7.4.2"
+        id("com.android.application").version(agp)
+        id("com.android.library").version(agp)
+
+        id("org.jetbrains.compose").version("1.4.0-alpha01-dev975")
     }
 }
 
-rootProject.name = "My application"
-
-include(":androidApp")
-include(":shared")
-include(":desktopApp")
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    }
+}

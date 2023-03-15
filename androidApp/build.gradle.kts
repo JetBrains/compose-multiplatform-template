@@ -16,11 +16,15 @@ kotlin {
 }
 
 android {
-    compileSdk = 33
+    compileSdk = (findProperty("android.compileSdk") as String).toInt()
+    namespace = "com.myapplication"
+
+    sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
+
     defaultConfig {
         applicationId = "com.myapplication.MyApplication"
-        minSdk = 26
-        targetSdk = 33
+        minSdk = (findProperty("android.minSdk") as String).toInt()
+        targetSdk = (findProperty("android.targetSdk") as String).toInt()
         versionCode = 1
         versionName = "1.0"
     }
