@@ -209,6 +209,8 @@ internal fun App() {
 
 <img src="readme_images/text_field_added.png" height="200px">
 
+Note that all @Composable functions in the shared/src folder should be `internal`.
+
 ### Configuring the iOS application
 
 This template contains a `iosApp/Configuration/Config.xcconfig` configuration file that allows you to configure most basic properties without having to move to Xcode. It contains:
