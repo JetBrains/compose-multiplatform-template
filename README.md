@@ -51,7 +51,7 @@ Switch to the Project View to see all files and targets belonging to the project
 
 <img src="readme_images/open_project_view.png" height="300px">
 
-Your Compose Multiplatform project includes three modules:
+Your Compose Multiplatform project includes four modules:
 
 ### `shared`
 This Kotlin module that contains the logic common for Desktop, Android and iOS applications – the code you share between platforms.
