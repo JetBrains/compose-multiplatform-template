@@ -14,7 +14,7 @@ Follow our tutorial below to get your first Compose Multiplatform app up and run
 The result will be a [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) project that uses the
 Compose Multiplatform UI framework.
 
-<img src="readme_images/banner.png" height="300">
+<img src="readme_images/banner.png" height="350">
 
 ## Set up the environment
 
@@ -123,9 +123,9 @@ To run your application on an Android emulator:
 2. In the list of run configurations, select `androidApp`.
 3. Choose your virtual device and click **Run**:
 
-   <img src="readme_images/run_on_android.png" height="60px">
+    <img src="readme_images/run_on_android.png" height="60px">
 
-   <img src="readme_images/android_app_running.png" height="300px">
+    <img src="readme_images/android_app_running.png" height="300px">
 
 <details>
   <summary>Alternatively, use Gradle</summary>
@@ -279,7 +279,7 @@ the same time:
 3. Re-run the `desktopApp`, `androidApp`, and `iosApp` configurations. You'll see this change reflected in all three
    apps:
 
-   <img src="readme_images/text_field_added.png" height="300px">
+   <img src="readme_images/text_field_added.png" height="350px">
 
 ## How to configure the iOS application
 
