@@ -1,8 +1,6 @@
 [![official project](http://jb.gg/badges/official.svg)](https://confluence.jetbrains.com/display/ALL/JetBrains+on+GitHub)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-# [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) Application
-
-![](readme_images/banner.png)
+# [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform) application
 
 > **Note**
 > The iOS part of Compose Multiplatform is in Alpha. It may change incompatibly and require manual migration in the
@@ -16,7 +14,7 @@ Follow our tutorial below to get your first Compose Multiplatform app up and run
 The result will be a [Kotlin Multiplatform](https://kotlinlang.org/docs/multiplatform.html) project that uses the
 Compose Multiplatform UI framework.
 
-![](readme_images/banner.png)
+<img src="readme_images/banner.png" height="300">
 
 ## Set up the environment
 
@@ -105,8 +103,11 @@ It depends on and uses the `shared` module as a CocoaPods dependency.
 
 ### On desktop
 
-This template contains the  `desktopApp` run configuration that you can use to run the desktop target in Android Studio
-or IntelliJ IDEA.
+To run your desktop application in Android Studio, select `desktopApp` in the list of run configurations and click **Run**:
+
+<img src="readme_images/run_on_desktop.png" height="60px">
+
+<img src="readme_images/desktop_app_running.png" height="300px">
 
 You can also run Gradle tasks in the terminal:
 
@@ -124,7 +125,7 @@ To run your application on an Android emulator:
 
    <img src="readme_images/run_on_android.png" height="60px">
 
-   <img src="readme_images/android_app_running.png" height="200px">
+   <img src="readme_images/android_app_running.png" height="300px">
 
 <details>
   <summary>Alternatively, use Gradle</summary>
@@ -146,11 +147,11 @@ To run your application on an iOS simulator in Android Studio, modify the `iosAp
 2. Navigate to **iOS Application** | **iosApp**.
 3. In the **Execution target** list, select your target device. Click **OK**:
 
-   <img src="readme_images/target_device.png">
+   <img src="readme_images/target_device.png" height="400px">
 
 4. The `iosApp` run configuration is now available. Click **Run** next to your virtual device:
 
-<img src="readme_images/hello_world_ios.png" height="200px">
+   <img src="readme_images/ios_app_running.png" height="300px">
 
 #### Running on a real iOS device
 
@@ -275,10 +276,10 @@ the same time:
    }
    ```
 
-3. Re-run both the `androidApp` and `iosApp` configurations. You'll see this change reflected in both the Android and
-   iOS apps:
+3. Re-run the `desktopApp`, `androidApp`, and `iosApp` configurations. You'll see this change reflected in all three
+   apps:
 
-  <img src="readme_images/text_field_added.png" height="200px">
+   <img src="readme_images/text_field_added.png" height="300px">
 
 ## How to configure the iOS application
 
