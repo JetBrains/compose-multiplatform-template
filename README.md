@@ -78,7 +78,7 @@ Your Compose Multiplatform project includes 4 modules:
 This is a Kotlin module that contains the logic common for desktop, Android, and iOS applications, that is, the code you
 share between platforms.
 
-This `shared` module is also where you’ll write your Compose Multiplatform code.
+This `shared` module is also where you'll write your Compose Multiplatform code.
 In `shared/src/commonMain/kotlin/App.kt`, you can find the shared root `@Composable` function for your app.
 
 It uses Gradle as the build system. You can add dependencies and change settings in `shared/build.gradle.kts`.
@@ -105,7 +105,7 @@ It depends on and uses the `shared` module as a CocoaPods dependency.
 
 To run your desktop application in Android Studio, select `desktopApp` in the list of run configurations and click **Run**:
 
-<img src="readme_images/run_on_desktop.png" height="60px">
+<img src="readme_images/run_on_desktop.png" height="60px"><br />
 
 <img src="readme_images/desktop_app_running.png" height="300px">
 
@@ -123,7 +123,7 @@ To run your application on an Android emulator:
 2. In the list of run configurations, select `androidApp`.
 3. Choose your virtual device and click **Run**:
 
-    <img src="readme_images/run_on_android.png" height="60px">
+    <img src="readme_images/run_on_android.png" height="60px"><br />      
 
     <img src="readme_images/android_app_running.png" height="300px">
 
