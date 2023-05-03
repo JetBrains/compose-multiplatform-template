@@ -1,4 +1,4 @@
-rootProject.name = "MyApplication"  // Not use whitespaces here
+rootProject.name = "MyApplication" // Not use whitespaces here
 
 include(":androidApp")
 include(":shared")
