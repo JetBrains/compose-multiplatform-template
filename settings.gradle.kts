@@ -1,4 +1,4 @@
-rootProject.name = "MyApplication"
+rootProject.name = "compose-multiplatform-template-with-navigation"
 
 include(":androidApp")
 include(":shared")
