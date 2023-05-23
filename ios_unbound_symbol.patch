@@ -1,0 +1,165 @@
+Index: iosEntryPoint/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/iosEntryPoint/build.gradle.kts b/iosEntryPoint/build.gradle.kts
+new file mode 100644
+--- /dev/null	(date 1684762578130)
++++ b/iosEntryPoint/build.gradle.kts	(date 1684762578130)
+@@ -0,0 +1,40 @@
++plugins {
++    kotlin("multiplatform")
++    kotlin("native.cocoapods")
++}
++
++kotlin {
++    iosX64()
++    iosArm64()
++    iosSimulatorArm64()
++
++    cocoapods {
++        version = "1.0.0"
++        summary = "Some description for the Shared Module"
++        homepage = "Link to the Shared Module homepage"
++        ios.deploymentTarget = "14.1"
++        podfile = project.file("../iosApp/Podfile")
++        framework {
++            baseName = "iosEntryPoint"
++            isStatic = true
++        }
++        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
++    }
++
++    sourceSets {
++        val iosX64Main by getting
++        val iosArm64Main by getting
++        val iosSimulatorArm64Main by getting
++
++        val iosMain by creating {
++            iosX64Main.dependsOn(this)
++            iosArm64Main.dependsOn(this)
++            iosSimulatorArm64Main.dependsOn(this)
++
++            dependencies {
++                implementation(project(":shared"))
++            }
++        }
++
++    }
++}
+Index: iosEntryPoint/src/iosMain/kotlin/Main.ios.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/iosEntryPoint/src/iosMain/kotlin/Main.ios.kt b/iosEntryPoint/src/iosMain/kotlin/Main.ios.kt
+new file mode 100644
+--- /dev/null	(date 1684761627420)
++++ b/iosEntryPoint/src/iosMain/kotlin/Main.ios.kt	(date 1684761627420)
+@@ -0,0 +1,3 @@
++
++
++fun AppController() = MainViewController()
+\ No newline at end of file
+Index: iosApp/iosApp/ContentView.swift
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/iosApp/iosApp/ContentView.swift b/iosApp/iosApp/ContentView.swift
+--- a/iosApp/iosApp/ContentView.swift	(revision c1dca303dbeeebc4fc3e65cf1ef7100dd5f72a4e)
++++ b/iosApp/iosApp/ContentView.swift	(date 1684762261564)
+@@ -1,10 +1,10 @@
+ import UIKit
+ import SwiftUI
+-import shared
++import iosEntryPoint
+
+ struct ComposeView: UIViewControllerRepresentable {
+     func makeUIViewController(context: Context) -> UIViewController {
+-        Main_iosKt.MainViewController()
++        Main_iosKt.AppController()
+     }
+
+     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
+Index: shared/build.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/shared/build.gradle.kts b/shared/build.gradle.kts
+--- a/shared/build.gradle.kts	(revision c1dca303dbeeebc4fc3e65cf1ef7100dd5f72a4e)
++++ b/shared/build.gradle.kts	(date 1684762578123)
+@@ -1,6 +1,5 @@
+ plugins {
+     kotlin("multiplatform")
+-    kotlin("native.cocoapods")
+     id("com.android.library")
+     id("org.jetbrains.compose")
+ }
+@@ -14,19 +13,6 @@
+     iosArm64()
+     iosSimulatorArm64()
+
+-    cocoapods {
+-        version = "1.0.0"
+-        summary = "Some description for the Shared Module"
+-        homepage = "Link to the Shared Module homepage"
+-        ios.deploymentTarget = "14.1"
+-        podfile = project.file("../iosApp/Podfile")
+-        framework {
+-            baseName = "shared"
+-            isStatic = true
+-        }
+-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
+-    }
+-
+     sourceSets {
+         val commonMain by getting {
+             dependencies {
+Index: .gitignore
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.gitignore b/.gitignore
+--- a/.gitignore	(revision c1dca303dbeeebc4fc3e65cf1ef7100dd5f72a4e)
++++ b/.gitignore	(date 1684762645992)
+@@ -13,3 +13,4 @@
+ iosApp/iosApp.xcodeproj/*
+ !iosApp/iosApp.xcodeproj/project.pbxproj
+ shared/shared.podspec
++iosEntryPoint/iosentrypoint.podspec
+Index: iosApp/Podfile
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/iosApp/Podfile b/iosApp/Podfile
+--- a/iosApp/Podfile	(revision c1dca303dbeeebc4fc3e65cf1ef7100dd5f72a4e)
++++ b/iosApp/Podfile	(date 1684761931989)
+@@ -1,5 +1,5 @@
+ target 'iosApp' do
+   use_frameworks!
+   platform :ios, '14.1'
+-  pod 'shared', :path => '../shared'
++  pod 'iosEntryPoint', :path => '../iosEntryPoint'
+ end
+\ No newline at end of file
+Index: settings.gradle.kts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/settings.gradle.kts b/settings.gradle.kts
+--- a/settings.gradle.kts	(revision c1dca303dbeeebc4fc3e65cf1ef7100dd5f72a4e)
++++ b/settings.gradle.kts	(date 1684761032490)
+@@ -2,6 +2,7 @@
+
+ include(":androidApp")
+ include(":shared")
++include(":iosEntryPoint")
+ include(":desktopApp")
+
+ pluginManagement {
