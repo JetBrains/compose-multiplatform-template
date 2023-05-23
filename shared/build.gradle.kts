@@ -27,7 +27,7 @@ kotlin {
                 implementation(compose.components.resources)
 
                 //for multiplatform image loading
-                api("io.github.qdsfdhvh:image-loader:1.4.1")
+                api("io.github.qdsfdhvh:image-loader:1.4.3")
 
                 val voyagerVersion = "1.0.0-rc06"
 
