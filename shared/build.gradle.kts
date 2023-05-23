@@ -13,6 +13,8 @@ kotlin {
     iosArm64()
     iosSimulatorArm64()
 
+    //due to public symbol IR issue, we are now using cocoapods from separate iosEntryPoint module and using that module in iosApp instead of shared and that module will be using shared module internally
+
     sourceSets {
         val commonMain by getting {
             dependencies {

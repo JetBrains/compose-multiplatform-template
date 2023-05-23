@@ -13,6 +13,7 @@ import cafe.adriel.voyager.core.lifecycle.LifecycleEffect
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.tab.LocalTabNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
+import cafe.adriel.voyager.transitions.SlideTransition
 
 @OptIn(ExperimentalAnimationApi::class)
 @Composable
@@ -29,10 +30,12 @@ fun Tab.TabContent() {
     )
 
     Navigator(screen = BasicNavigationScreen(index = 0)) { navigator ->
+        //as of now commenting this out, this is causing java.lang.NoSuchMethodError: No static method AnimatedContent issue
         //SlideTransition(navigator) { screen ->
             Column {
                 InnerTabNavigation()
                 //screen.Content()
+                navigator.lastItem.Content()
                 println("Navigator Last Event: ${navigator.lastEvent}")
             }
         //}
