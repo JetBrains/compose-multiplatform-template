@@ -29,6 +29,7 @@ To work with this template, you need the following:
 * [Android Studio](https://developer.android.com/studio)
 * The [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile)
 * The [CocoaPods dependency manager](https://kotlinlang.org/docs/native-cocoapods.html)
+* The [Compose Multiplatform IDE Support](https://plugins.jetbrains.com/plugin/16541-compose-multiplatform-ide-support)
 
 ### Check your environment
 
