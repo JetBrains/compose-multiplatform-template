@@ -13,6 +13,10 @@ kotlin {
     iosX64()
     iosArm64()
     iosSimulatorArm64()
+    js(IR) {
+        browser()
+        binaries.executable()
+    }
 
     cocoapods {
         version = "1.0.0"
@@ -80,4 +84,8 @@ android {
     kotlin {
         jvmToolchain(11)
     }
+}
+
+compose.experimental {
+    web.application {}
 }
