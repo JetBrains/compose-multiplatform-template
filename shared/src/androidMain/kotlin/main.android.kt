@@ -8,6 +8,6 @@ actual fun getPlatformName(): String = "Android"
 
 @Preview
 @Composable
-fun SharedPreview() {
-    Text("Hello shared Preview on Android")
+fun MainPreview() {
+    MainView()
 }
