@@ -1,0 +1,23 @@
+[versions]
+kotlin = "1.9.10"
+android-gradle-plugin = "8.0.2"
+compose = "1.5.2"
+
+androidx-activity-compose = "1.7.2"
+androidx-appcompat-appcompat = "1.6.1"
+androidx-core-ktx = "1.12.0"
+
+android-compileSdk = "34"
+android-targetSdk = "34"
+android-minSdk = "24"
+
+[libraries]
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity-compose" }
+androidx-appcompat-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat-appcompat" }
+androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "android-gradle-plugin" }
+android-library = { id = "com.android.library", version.ref = "android-gradle-plugin" }
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
